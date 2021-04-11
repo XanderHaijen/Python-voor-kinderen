@@ -26,3 +26,5 @@ while play_again == 'ja':
             print("Steen klopt de schaar kapot. Jij verliest.")
 
     play_again = input("Nog eens spelen? (ja / nee): ").lower()
+    while play_again.lower() != "ja" and play_again.lower() != "nee":
+        play_again = input("Antwoord met ja of nee: ").lower()
