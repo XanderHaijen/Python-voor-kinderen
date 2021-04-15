@@ -20,7 +20,7 @@ def keuze_van_speler():
     Als de speler een te groot getal geeft, vraag je het nog eens.
     Gebruik een return om het antwoord terug te geven
     """
-    return None
+    return 0
 
 def verminder_getal(getal):
     """
@@ -31,7 +31,7 @@ def verminder_getal(getal):
 
 def niet_bezet(vakjes, vak):
     """
-    OPDRACHT: ga na of een vakje al bezet is. Een vakje niet bezet als het gelijk is aan ' '.
+    OPDRACHT: ga na of een vakje al bezet is. Een vakje niet bezet als het gelijk is aan ' ' (een spatie).
     TIP: om het juiste vakje te kiezen, kan je gebruik maken van vakjes[vak]
     """
     return False
@@ -45,7 +45,7 @@ def print_uitkomst(uitkomst, winnaar):
         kijk eerst of de uitkomst 'gewonnen' of 'gelijk' is. Als de uitkomst 'gelijk' is, print je gelijkstand.
         Zo niet moet je bekijken wie er gewonnen heeft
     """
-    print('')
+    print(' ')
 
 
 # -------------------- HIER EINDIGT DE OPDRACHT --------------------
@@ -100,10 +100,10 @@ def take_turn(player, turn):
                     raise RuntimeError('Het getal is te klein of te groot. \n'
                                        'Zorg ervoor dat je een nieuw getal vraagt en de functie verminder_getal gebruikt!!')
             except:
-                raise TypeError("Ben je er zeker van dat je functie keuze_van_speler een  gebruikte?")
+                raise TypeError("Ben je er zeker van dat je functie keuze_van_speler een getal vroeg (denk aan int())?")
 
         if niet_bezet(boxes, box):  # initial value
-            if boxes[box] != '':
+            if boxes[box] != ' ':
                 raise RuntimeError("Je functie niet_bezet werkt niet juist. Kijk nog eens na!")
             boxes[box] = player  # set to value of current player
             break
