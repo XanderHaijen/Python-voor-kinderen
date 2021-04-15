@@ -25,7 +25,7 @@ def maakSlang(turtle):
         4. Ga naar de positie (0,0)
     """
     turtle.speed(0)
-
+    ...
 
 def maakEten(turtle):
     """
@@ -36,7 +36,7 @@ def maakEten(turtle):
         3. zet de beginpositie op (0,100)
     """
     turtle.speed(0)
-
+    ...
 
 def maakTitel(score, highscore):
     """
