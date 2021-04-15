@@ -6,7 +6,7 @@ def rockPaperScissors():
     print("Jij koos " + user_action + " ,de computer koos " + computer_action + " .")
 
     if user_action == computer_action:
-        print(f"Jij en de computer kozen allebei {user_action}. Gelijkspel!")
+        print("Jij en de computer kozen allebei " + user_action +". Gelijkspel!")
     elif user_action == "steen":
         if computer_action == "schaar":
             print("Steen klopt de schaar kapot. Jij wint!")

@@ -1,6 +1,5 @@
-# OPGEPAST: Pas niets aan aan de code hieronder.
+# OPGEPAST:
 # De opdracht begint vanaf de vermelding "Hier begint de opdracht"
-
 # Laat deze import staan. Je hebt hem straks nodig
 import random
 
@@ -16,9 +15,10 @@ def keuze_van_computer():
 
 def keuze_van_speler():
     """
-    OPDRACHT: vraag aan de speler een getal tussen 0 en 8.
+    OPDRACHT: vraag aan de speler een getal tussen 1 en 9.
     Als de speler een te groot getal geeft, vraag je het nog eens.
-    Gebruik een return om het antwoord terug te geven
+    Gebruik een return om het antwoord terug te geven.
+    TIP: gebruik een while-lus om te checken of de input juist was.
     """
     return 0
 
@@ -32,17 +32,16 @@ def verminder_getal(getal):
 def niet_bezet(vakjes, vak):
     """
     OPDRACHT: ga na of een vakje al bezet is. Een vakje niet bezet als het gelijk is aan ' ' (een spatie).
-    TIP: om het juiste vakje te kiezen, kan je gebruik maken van vakjes[vak]
+    TIP: om het juiste vakje te kiezen, kan je gebruik maken van de variabele vakjes[vak]
     """
-    return False
-
+    return None
 
 def print_uitkomst(uitkomst, winnaar):
     """
     OPDRACHT: Print de winnaar van het spel, of gelijkstand.
     De variabele 'uitkomst' bevat oftewel gelijk, oftewel 'gewonnen'. Winnaar bevat wie gewonnen is.
     TIP:
-        kijk eerst of de uitkomst 'gewonnen' of 'gelijk' is. Als de uitkomst 'gelijk' is, print je gelijkstand.
+        kijk eerst of de uitkomst 'gewonnen' of 'gelijk' is. Als de uitkomst 'gelijk' is, print je 'gelijkstand'.
         Zo niet moet je bekijken wie er gewonnen heeft
     """
     print(' ')
@@ -97,8 +96,7 @@ def take_turn(player, turn):
             try:
                 box = verminder_getal(keuze_van_speler())
                 if box < 0 or box > 8:
-                    raise RuntimeError('Het getal is te klein of te groot. \n'
-                                       'Zorg ervoor dat je een nieuw getal vraagt en de functie verminder_getal gebruikt!!')
+                    raise RuntimeError("De keuze van de speler is te klein of te groot.")
             except:
                 raise TypeError("Ben je er zeker van dat je functie keuze_van_speler een getal vroeg (denk aan int())?")
 
@@ -151,7 +149,7 @@ def play(player, turn):
             print_uitkomst(result, player_ext)
             if result == 'gelijk':
                 print("DIT IS EEN CONTROLE: het spel was gelijk. Zegt de lijn hierboven dat ook?")
-            if result == 'gelijk':
+            if result == 'gewonnen':
                 print(f"DIT IS EEN CONTROLE: het spel was gewonnen door {player}. Zegt de lijn hierboven dat ook?")
             break
 
@@ -160,9 +158,9 @@ def play(player, turn):
 
 
 # Begin the game:
-print('\n\nWelkom bij Tic Tac Toe versus de computer!')
+print('\n\nWelkom bij Tic-Tac-Toe versus de computer!')
 antw = input("Ben je zeker dat je enkel code hebt aangepast waar het moest (dus tussen de twee "
-             "OPDRACHT-vermeldingen)? \n "
+             "OPDRACHT-vermeldingen)? "
              "Als je dit wel gedaan hebt, zal je spelletje niet werken! Geef 'ja' in als je zeker bent --> ")
 if antw.lower() != 'ja':
     raise InterruptedError("Je bent niet zeker of je enkel de juiste code hebt aangepast. Kijk dit na of vraag hulp!")
