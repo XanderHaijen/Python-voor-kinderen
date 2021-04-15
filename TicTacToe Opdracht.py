@@ -1,18 +1,8 @@
-# OPGEPAST: Pas niets aan aan de code hieronder. De opdracht begint vanaf de vermelding "Hier begint de opdracht"
+# OPGEPAST: Pas niets aan aan de code hieronder.
+# De opdracht begint vanaf de vermelding "Hier begint de opdracht"
 
-# Command-line Tic Tac Toe for HUMAN vs COMPUTER written in Python.
-# Play in a terminal by running 'python tictactoe.py'.
-
-
+# Laat deze import staan. Je hebt hem straks nodig
 import random
-
-boxes = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ]
-MENS = 'X'
-COMPUTER = '0'
-first_player = MENS
-turn = 1
-winning_combos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6],
-                  [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6], ]
 
 # ------------------ HIER BEGINT DE OPDRACHT ----------------------
 # Vul de volgende functies aan om je eigen tic-tac-toe te maken
@@ -30,15 +20,21 @@ def keuze_van_speler():
     Als de speler een te groot getal geeft, vraag je het nog eens.
     Gebruik een return om het antwoord terug te geven
     """
-    return input("  ")
+    return None
 
+def verminder_getal(getal):
+    """
+    OPDRACHT: verlaag het gegeven getal met 1 en gebruik een return om het terug te geven
+    TIP: gebruik hiervoor een nieuwe variabele
+    """
+    return 0
 
 def niet_bezet(vakjes, vak):
     """
     OPDRACHT: ga na of een vakje al bezet is. Een vakje niet bezet als het gelijk is aan ' '.
     TIP: om het juiste vakje te kiezen, kan je gebruik maken van vakjes[vak]
     """
-    pass
+    return False
 
 
 def print_uitkomst(uitkomst, winnaar):
@@ -47,13 +43,30 @@ def print_uitkomst(uitkomst, winnaar):
     De variabele 'uitkomst' bevat oftewel gelijk, oftewel 'gewonnen'. Winnaar bevat wie gewonnen is.
     TIP:
         kijk eerst of de uitkomst 'gewonnen' of 'gelijk' is. Als de uitkomst 'gelijk' is, print je gelijkstand.
-        Zo niet moet je kijken wie er gewonnen heeft
+        Zo niet moet je bekijken wie er gewonnen heeft
     """
-    pass
+    print('')
 
 
 # -------------------- HIER EINDIGT DE OPDRACHT --------------------
 # Pas hieronder geen code aan !!
+# ----------------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------
+
+
+boxes = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ]
+MENS = 'X'
+COMPUTER = '0'
+first_player = MENS
+turn = 1
+winning_combos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6],
+                  [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6], ]
 
 def print_board(initial=False):
     """ Print the game board. If this is the beginning of the game,
@@ -81,12 +94,13 @@ def take_turn(player, turn):
             if box not in range(9):
                 raise RuntimeError("De computer kiest een verkeerd getal!")
         else:
-            box = keuze_van_speler()
             try:
+                box = verminder_getal(keuze_van_speler())
                 if box < 0 or box > 8:
-                    raise RuntimeError('Het getal is te klein of te groot. Zorg ervoor dat je een nieuw getal vraagt!')
+                    raise RuntimeError('Het getal is te klein of te groot. \n'
+                                       'Zorg ervoor dat je een nieuw getal vraagt en de functie verminder_getal gebruikt!!')
             except:
-                raise TypeError("Ben je er zeker van dat je int(input()) gebruikte?")
+                raise TypeError("Ben je er zeker van dat je functie keuze_van_speler een  gebruikte?")
 
         if niet_bezet(boxes, box):  # initial value
             if boxes[box] != '':

@@ -9,4 +9,5 @@ if computer == "schaar":
         print("gelijkspel")
     elif speler == "steen":
         print("je bent gewonnen")
-    elif 
+    elif speler == 'papier':
+        pass
