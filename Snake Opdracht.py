@@ -33,7 +33,8 @@ def maakEten(turtle):
         0. zet de snelheid op het laagste (is al gedaan in de eerste lijn)
         1. Maak de kleur rood
         2. Maak de vorm een cirkel. PAS OP: het is niet de bedoeling dat je een cirkel tekent!
-        3. zet de beginpositie op (0,100)
+        3. Hef de pen van je turtle op
+        4. zet de beginpositie op (0,100)
     """
     turtle.speed(0)
     ...

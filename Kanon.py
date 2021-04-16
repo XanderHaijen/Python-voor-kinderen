@@ -1,5 +1,5 @@
-#Kanon: raak zo veel mogelijk doelen
-#de opdracht begint bij "HIER BEGINT DE OPDRACHT"
+# Kanon: raak zo veel mogelijk doelen
+# De opdracht begint bij "HIER BEGINT DE OPDRACHT"
 
 # Laat deze imports staan: je hebt ze straks nodig.
 import collections.abc as collections
@@ -23,14 +23,14 @@ def snelheidVanDoelen():
     OPDRACHT: Gebruik een return-statement om de snelheid van de doelen te bepalen.
         Dit is een kommagetal tussen 0 en 3. Je mag zelf kiezen hoe snel je doelen vliegen.
     """
-    return 0
+    return
 
 def verhoogScore(score):
     """
     OPDRACHT: Als je een bal raakt, verdien je een punt. Gebruik een return om een verhoogde score terug te geven.
             Een verhoogde score is de score met één punt bij.
     """
-    return 0
+    return
 
 def spelVoorbij(status):
     """
