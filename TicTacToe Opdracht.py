@@ -10,7 +10,7 @@ def keuze_van_computer():
     """ OPDRACHT: gebruik een return om een willekeurig getal terug te geven van 0 tot en met 8.
         TIP: in dit bestand is het package "random" al geïmporteerd
     """
-    return 0
+    return random.randint(0,8)
 
 
 def keuze_van_speler():
@@ -20,21 +20,28 @@ def keuze_van_speler():
     Gebruik een return om het antwoord terug te geven.
     TIP: gebruik een while-lus om te checken of de input juist was.
     """
-    return 0
+    getal = int(input('Geef een getal van 1 tot en met 9. '))
+    while getal > 9:
+        getal = int(input("Geef een getal van 1 tot en met 9. "))
+    return getal
 
 def verminder_getal(getal):
     """
     OPDRACHT: verlaag het gegeven getal met 1 en gebruik een return om het terug te geven
     TIP: gebruik hiervoor een nieuwe variabele
     """
-    return 0
+    verminderdGetal = getal - 1
+    return verminderdGetal
 
 def niet_bezet(vakjes, vak):
     """
     OPDRACHT: ga na of een vakje al bezet is. Een vakje niet bezet als het gelijk is aan ' ' (een spatie).
     TIP: om het juiste vakje te kiezen, kan je gebruik maken van de variabele vakjes[vak]
     """
-    return None
+    if vakjes[vak] == ' ' :
+        return True
+    else:
+        return False
 
 def print_uitkomst(uitkomst, winnaar):
     """
@@ -44,7 +51,13 @@ def print_uitkomst(uitkomst, winnaar):
         kijk eerst of de uitkomst 'gewonnen' of 'gelijk' is. Als de uitkomst 'gelijk' is, print je 'gelijkstand'.
         Zo niet moet je bekijken wie er gewonnen heeft
     """
-    print(' ')
+    if uitkomst == "gelijkspel":
+        print('Gelijkspel: niemand wint!')
+    elif uitkomst == "gewonnen":
+        if winnaar == "mens":
+            print("Proficiat! Je bent gewonnen.")
+        elif winnaar == "computer":
+            print("Spijtig! Je bent verloren.")
 
 
 # -------------------- HIER EINDIGT DE OPDRACHT --------------------
@@ -98,7 +111,7 @@ def take_turn(player, turn):
                 if box < 0 or box > 8:
                     raise RuntimeError("De keuze van de speler is te klein of te groot.")
             except:
-                raise TypeError("Ben je er zeker van dat je functie keuze_van_speler een getal vroeg (denk aan int())?")
+                raise TypeError("Ben je er zeker van dat je functie keuze_van_speler een getal vroeg en geen string? (denk aan int())")
 
         if niet_bezet(boxes, box):  # initial value
             if boxes[box] != ' ':
@@ -145,12 +158,12 @@ def play(player, turn):
         print_board()
         result = check_for_win(player, turn)
         if result is not None:
-            player_ext = player if result == 'gewonnen' else None
+            player_ext = ("mens" if player == 'X' else "computer") if result == 'gewonnen' else None
             print_uitkomst(result, player_ext)
             if result == 'gelijk':
                 print("DIT IS EEN CONTROLE: het spel was gelijk. Zegt de lijn hierboven dat ook?")
             if result == 'gewonnen':
-                print(f"DIT IS EEN CONTROLE: het spel was gewonnen door {player}. Zegt de lijn hierboven dat ook?")
+                print(f"DIT IS EEN CONTROLE: het spel was gewonnen door {player_ext}. Zegt de lijn hierboven dat ook?")
             break
 
         turn += 1

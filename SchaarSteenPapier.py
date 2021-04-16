@@ -1,6 +1,10 @@
 import random
 def rockPaperScissors():
     user_action = input("Geef je zet (schaar, steen, papier):  ")
+    while user_action.lower() not in ("schaar", "steen", "papier"):
+        user_action = input("Kies tussen schaar, steen of papier! \n "
+                            "Geef je zet (schaar, steen, papier):  ")
+    user_action = user_action.lower()
     possible_actions = ["steen", "papier", "schaar"]
     computer_action = random.choice(possible_actions)
     print("Jij koos " + user_action + " ,de computer koos " + computer_action + " .")

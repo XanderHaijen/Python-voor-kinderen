@@ -18,7 +18,6 @@ def verbergTurtle():
     """
     pass
 
-
 def snelheidVanDoelen():
     """
     OPDRACHT: Gebruik een return-statement om de snelheid van de doelen te bepalen.
@@ -32,7 +31,6 @@ def verhoogScore(score):
             Een verhoogde score is de score met één punt bij.
     """
     return 0
-
 
 def spelVoorbij(status):
     """
