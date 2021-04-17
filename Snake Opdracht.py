@@ -76,6 +76,14 @@ def kiesMaximum(getal1, getal2):
 # ----------------------------- EINDE VAN DE OPDRACHT -------------------------------
 
 
+if (input("Welkom bij Kanon! \n \n"
+      "Voordat je dit spelletje kan spelen, moet je eerst alle functies voltooien die in dit bestand staan. \n"
+      "Krijg je een foutmelding in de vorm van rode tekst? Lees dan eens de laatste lijn van de foutmelding om te \n"
+      "zien wat je foutdeed. Schrijf hier 'ja' als je deze uitleg gelezen hebt. --> ")).lower().__contains__('ja'):
+    pass
+else:
+    raise InterruptedError()
+
 DELAY = 0.25
 delay = DELAY
 
@@ -268,5 +276,6 @@ while True:
                       font=("Courier", 24, "normal"))
 
     time.sleep(delay)
+
 
 wn.mainloop()

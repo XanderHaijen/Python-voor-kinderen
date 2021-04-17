@@ -160,7 +160,7 @@ def play(player, turn):
 # Begin the game:
 print('\n\nWelkom bij Tic-Tac-Toe versus de computer!')
 antw = input("Ben je zeker dat je enkel code hebt aangepast waar het moest (dus tussen de twee "
-             "OPDRACHT-vermeldingen)? "
+             "OPDRACHT-vermeldingen)? \n"
              "Als je dit wel gedaan hebt, zal je spelletje niet werken! Geef 'ja' in als je zeker bent --> ")
 if antw.lower() != 'ja':
     raise InterruptedError("Je bent niet zeker of je enkel de juiste code hebt aangepast. Kijk dit na of vraag hulp!")

@@ -1,38 +1,15 @@
 import random
-def rockPaperScissors():
-    user_action = input("Geef je zet (schaar, steen, papier):  ")
-    while user_action.lower() not in ("schaar", "steen", "papier"):
-        user_action = input("Kies tussen schaar, steen of papier! \n "
-                            "Geef je zet (schaar, steen, papier):  ")
-    user_action = user_action.lower()
-    possible_actions = ["steen", "papier", "schaar"]
-    computer_action = random.choice(possible_actions)
-    print("Jij koos " + user_action + " ,de computer koos " + computer_action + " .")
 
-    if user_action == computer_action:
-        print("Jij en de computer kozen allebei " + user_action +". Gelijkspel!")
-    elif user_action == "steen":
-        if computer_action == "schaar":
-            print("Steen klopt de schaar kapot. Jij wint!")
-        else:
-            print("Papier bedekt steen! Je verliest.")
-    elif user_action == "papier":
-        if computer_action == "steen":
-            print("Papier bedekt steen. Jij wint!")
-        else:
-            print("Schaar knipt papier. Je verliest.")
-    elif user_action == "schaar":
-        if computer_action == "papier":
-            print("Schaar knipt papier. Jij wint!")
-        else:
-            print("Steen klopt de schaar kapot. Jij verliest.")
+# OPDRACHT:
+# Schrijf je eigen versie van shcaar-steen-papier tegen de computer
+# 1. Begin met een programma dat het spel exact 1 keer uitvoert
+# 2. Maak hiervan een functie
+# 3. Vraag na elk spelletje of de speler nog eens wil spelen
+#   3b. Stel de vraag nog eens als je speler niet antwoord met ja of nee
+# 4. Zorg ervoor dat je programma een nieuwe keuze vraagt als de speler geen schaar, steen of papier ingeeft
+# 5. Zorg ervoor dat je spelletje niet hoofdlettergevoelig is, maar alles in kleine letters kan verwerken
 
-# Spelletje #
-play_again = "ja"
 
-while play_again == 'ja':
-    rockPaperScissors()
-    play_again = input("Nog eens spelen? (ja / nee): ").lower()
-    while play_again.lower() != "ja" and play_again.lower() != "nee":
-        play_again = input("Antwoord met ja of nee: ").lower()
+def schaar_steen_papier():
+    ...
 

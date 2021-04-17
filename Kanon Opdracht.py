@@ -526,7 +526,7 @@ def move():
 
     for target in targets:
         try:
-            target.x -= snelheidVanDoelen() * 0.5 if snelheidVanDoelen() != 0 else 0.5
+            target.x -= (snelheidVanDoelen() * 0.5 if snelheidVanDoelen() != 0 else 0.5)
         except:
             target.x -= 0.5
 
@@ -554,12 +554,19 @@ def move():
 
     turtle.ontimer(move, 50)
 
-turtle.setup(420, 420, 370, 0)
-verbergTurtle()
-if turtle.isvisible():
-    raise RuntimeError("Je moet je turtle verbergen!")
-turtle.up()
-turtle.tracer(False)
-turtle.onscreenclick(tap)
-move()
-turtle.done()
+if (input("Welkom bij Kanon! \n \n"
+      "Voordat je dit spelletje kan spelen, moet je eerst alle functies voltooien die in dit bestand staan. \n"
+      "Krijg je een foutmelding in de vorm van rode tekst? Lees dan eens de laatste lijn van de foutmelding om te \n"
+      "zien wat je foutdeed. Schrijf hier 'ja' als je deze uitleg gelezen hebt. --> ")).lower().__contains__('ja'):
+
+    turtle.setup(420, 420, 370, 0)
+    verbergTurtle()
+    if turtle.isvisible():
+        raise RuntimeError("Je moet je turtle verbergen!")
+    turtle.up()
+    turtle.tracer(False)
+    turtle.onscreenclick(tap)
+    move()
+    turtle.done()
+else:
+    print("Lees bovenstaand bericht goed en herstart je spelletje!")
