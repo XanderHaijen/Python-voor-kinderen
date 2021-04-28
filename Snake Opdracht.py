@@ -76,13 +76,14 @@ def kiesMaximum(getal1, getal2):
 # ----------------------------- EINDE VAN DE OPDRACHT -------------------------------
 
 
-if (input("Welkom bij Snake! \n \n"
+if (input("Welkom bij Kanon! \n \n"
       "Voordat je dit spelletje kan spelen, moet je eerst alle functies voltooien die in dit bestand staan. \n"
-      "Krijg je een foutbericht? Lees dan eens de laatste lijn van de foutmelding om te"
-      "zien wat je foutdeed. \n Schrijf hier 'ja' als je deze uitleg gelezen hebt. --> ")).lower().__contains__('ja'):
+      "Krijg je een foutmelding in de vorm van rode tekst? Lees dan eens de laatste lijn van de foutmelding om te \n"
+      "zien wat je foutdeed. Schrijf hier 'ja' als je deze uitleg gelezen hebt. --> ")).lower().__contains__('ja'):
     pass
 else:
-    exit(-2)
+    raise InterruptedError()
+
 DELAY = 0.25
 delay = DELAY
 
@@ -94,8 +95,7 @@ high_score = 0
 wn = t.Screen()
 name = mijnNaam()
 if len(name) == 0:
-    print("\n Je bent vergeten je naam in te geven in mijnNaam()")
-    exit(-2)
+    raise RuntimeError("Je bent vergeten je naam in te geven in mijnNaam()")
 else:
     my_string = "Snake Game van" + name
 wn.title(my_string)
@@ -106,17 +106,15 @@ wn.tracer(0)  # Turns off the screen updates
 # Snake head
 snake = t.Turtle()
 maakSlang(snake)
-if snake.shape() != "square" or snake.color() != ("black", "black") or snake.xcor() != 0 or snake.ycor() != 0:
-    print("\n Je functie maakSlang() is niet juist.")
-    exit(-2)
+if snake.shape() != "square" or snake.color() != ("black","black") or snake.xcor() != 0 or snake.ycor() != 0:
+    raise RuntimeError("Je functie maakSlang() is niet juist.")
 snake.direction = "stop"
 
 # Snake food
 food = t.Turtle()
 maakEten(food)
 if food.shape() != "circle" or food.color() != ("red", "red") or food.xcor() != 0 or food.ycor() != 100:
-    print(" \n Je functie maakEten() is niet juist.")
-    exit(-2)
+    raise RuntimeError("Je functie maakEten() is niet juist.")
 
 segments = []
 
@@ -128,14 +126,9 @@ pen.color("white")
 pen.penup()
 pen.hideturtle()
 pen.goto(0, 260)
-try:
-    scoreboard = maakTitel(score, high_score)
-    if not (scoreboard.__contains__(str(score)) and scoreboard.__contains__(str(high_score))):
-        print(" \n Je score-string geeft de score en highscore niet weer.")
-        exit(-2)
-except:
-    print("\n Je functie maakTitel() geeft geen string terug.")
-    exit(-2)
+scoreboard = maakTitel(score, high_score)
+if not (scoreboard.__contains__(str(score)) and scoreboard.__contains__(str(high_score))):
+    raise RuntimeError("Je score-string geeft de score en highscore niet weer.")
 pen.write(scoreboard, align="center", font=("Courier", 24, "normal"))
 
 
@@ -213,12 +206,9 @@ while True:
 
         # Check for a collision with the food
     if snake.distance(food) < 20:
-        try:
-            x = kiesNieuwePositie()
-            y = kiesNieuwePositie()
-        except:
-            print("Je functie kiesNieuwePositie() werkt niet correct.")
-            exit(-2)
+        # Move the food to a random spot
+        x = kiesNieuwePositie()
+        y = kiesNieuwePositie()
         food.goto(x, y)
 
         # Add a segment
@@ -234,22 +224,14 @@ while True:
 
         # Increase the score
         old_score = score
-        try:
-            score = nieuweScore(score)
-            score += 1
-            score += -1
-            assert score == old_score + 10
-        except:
-            print("Je functie nieuweScore werkt niet correct. Ben je er zeker van dat je een getal teruggeeft en score met 10 verhoogt?")
-            exit(-2)
+        score = nieuweScore(score)
+        if score != old_score + 10:
+            raise RuntimeError("De functie nieuweScore werkt niet juist!")
 
         old_high_score = high_score
-        try:
-            high_score = kiesMaximum(score, high_score)
-            assert high_score == max(old_high_score, score)
-        except:
-            print("Je functie kiesMaximum() werkt niet correct.")
-            exit(-2)
+        high_score = kiesMaximum(score, high_score)
+        if high_score != max(old_high_score, score):
+            raise RuntimeError("De functie kiesMaximum werkt niet juist!")
 
         pen.clear()
         pen.write(maakTitel(score, high_score), align="center", font=("Courier", 24, "normal"))
