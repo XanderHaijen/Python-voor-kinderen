@@ -45,7 +45,7 @@ def niet_bezet(vakjes, vak):
         return True
     else:
         return False
-    # Korter is natuurlijk return vakjes[vak] == ' ', maar dat is minder expliciet
+    # Korter is natuurlijk return vakjes[vak] == ' ', maar dat is minder expliciet en intuïtief
 
 def print_uitkomst(uitkomst, winnaar):
     """
@@ -74,8 +74,6 @@ def print_uitkomst(uitkomst, winnaar):
 # ----------------------------------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------------------------------
-
-
 boxes = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ]
 MENS = 'X'
 COMPUTER = '0'
@@ -106,20 +104,42 @@ def take_turn(player, turn):
 
     while True:
         if player is COMPUTER:
-            box = keuze_van_computer()
-            if box not in range(9):
-                raise RuntimeError("De computer kiest een verkeerd getal!")
+            try:
+                box = keuze_van_computer()
+                assert box in range(9)
+            except AssertionError:
+                print("\n Je functie keuze_van_computer() geeft geen getal terug tussen 0 en 8!")
+                exit(-2)
+            except:
+                print("\n Er zit een fout in je functie keuze_van_computer().")
+                exit(-2)
         else:
             try:
                 box = verminder_getal(keuze_van_speler())
-                if box < 0 or box > 8:
-                    raise RuntimeError("De keuze van de speler is te klein of te groot.")
+                assert box in range(9)
+            except TypeError:
+                print("Ben je er zeker van dat je functie keuze_van_speler een getal vroeg en geen string? (denk aan int())")
+                exit(-2)
+            except AssertionError:
+                print("Je functie keuze_van_speler geeft geen getal terug tussen 0 en 8!")
+                exit(-2)
             except:
-                raise TypeError("Ben je er zeker van dat je functie keuze_van_speler een getal vroeg en geen string? (denk aan int())")
+                print("Je functie verminder_getal() of keuze_van_speler() werkt niet correct!")
+                exit(-2)
+        try:
+            nt_bezet = niet_bezet(boxes, box)
+            if type(nt_bezet) != bool:
+                print("Je functie niet_bezet() moet True of False teruggeven met een return-statement.")
+                exit(-2)
+            assert (boxes[box] == ' ') if nt_bezet else (boxes[box] != ' ')
+        except AssertionError:
+            print("Je functie niet_bezet() voert geen juiste vergelijking uit.")
+            exit(-2)
+        except:
+            print("Je functie niet_bezet() werkt niet correct.")
+            exit(-2)
 
         if niet_bezet(boxes, box):  # initial value
-            if boxes[box] != ' ':
-                raise RuntimeError("Je functie niet_bezet werkt niet juist. Kijk nog eens na!")
             boxes[box] = player  # set to value of current player
             break
         else:
@@ -152,7 +172,6 @@ def check_for_win(player, turn):
         if turn == 9:
             return 'gelijk'
 
-
 def play(player, turn):
     """ Create a loop that keeps the game in play
         until it ends in a win or tie
@@ -163,7 +182,12 @@ def play(player, turn):
         result = check_for_win(player, turn)
         if result is not None:
             player_ext = ("mens" if player == 'X' else "computer") if result == 'gewonnen' else None
-            print_uitkomst(result, player_ext)
+            try:
+                print_uitkomst(result, player_ext)
+            except:
+                print("Je functie print_uitkomst() werkt niet correct!")
+                exit(-2)
+
             if result == 'gelijk':
                 print("DIT IS EEN CONTROLE: het spel was gelijk. Zegt de lijn hierboven dat ook?")
             if result == 'gewonnen':
@@ -179,8 +203,9 @@ print('\n\nWelkom bij Tic-Tac-Toe versus de computer!')
 antw = input("Ben je zeker dat je enkel code hebt aangepast waar het moest (dus tussen de twee "
              "OPDRACHT-vermeldingen)? \n"
              "Als je dit wel gedaan hebt, zal je spelletje niet werken! Geef 'ja' in als je zeker bent --> ")
-if antw.lower() != 'ja':
-    raise InterruptedError("Je bent niet zeker of je enkel de juiste code hebt aangepast. Kijk dit na of vraag hulp!")
+if 'ja' not in antw.lower():
+    exit(-2)
 
 print_board(initial=True)
 play(first_player, turn)
+

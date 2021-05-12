@@ -18,6 +18,7 @@ def verbergTurtle():
     """
     turtle.hideturtle()
 
+
 def snelheidVanDoelen():
     """
     OPDRACHT: Gebruik een return-statement om de snelheid van de doelen te bepalen.
@@ -25,13 +26,15 @@ def snelheidVanDoelen():
     """
     return 1
 
+
 def verhoogScore(score):
     """
     OPDRACHT: Als je een bal raakt, verdien je een punt. Gebruik een return om een verhoogde score terug te geven.
             Een verhoogde score is de score met één punt bij.
     """
-    verhoogdeScore = score +1
+    verhoogdeScore = score + 1
     return verhoogdeScore
+
 
 def spelVoorbij(status):
     """
@@ -41,13 +44,15 @@ def spelVoorbij(status):
     if status == "gedaan":
         print('Game over.')
 
+
 def positieVanDoelen():
     """
     OPDRACHT: De doelen verschijnen op een willekeurige plaats langs de zijkant. Om die plaats te bepalen, moet je een
                 return gebruiken om een willekeurig getal tussen -150 en 150 terug te geven
     TIP: het package 'random' is al geïmporteerd
     """
-    return random.randint(-150,150)
+    return random.randint(-150, 150)
+
 
 def scorebord(score):
     """
@@ -71,7 +76,6 @@ def scorebord(score):
 # ---------------------------------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------------------------------
-
 
 
 class Vector(collections.Sequence):
@@ -509,12 +513,23 @@ def draw(nb_hits):
 
 def update_score(nb_hits):
     global score
-    for i in range(nb_hits):
-        score = verhoogScore(score)
+    try:
+        for i in range(nb_hits):
+            score = verhoogScore(score)
+    except:
+        print("Je functie verhoogScore() werkt niet correct!")
+        exit(-2)
     turtle.goto(0, 175)
     turtle.pendown()
-    my_string = scorebord(score)
-    turtle.write(my_string, align='center', font=("Arial", 20, 'normal'))
+    try:
+        my_string = scorebord(score)
+        turtle.write(my_string, align='center', font=("Arial", 20, 'normal'))
+    except TypeError:
+        print("Je functie scorebord() maakt geen string aan! Denk aan str( ).")
+        exit(-2)
+    except:
+        print("Je functie scorebord() werkt niet correct.")
+        exit(-2)
     turtle.penup()
 
 
@@ -522,8 +537,16 @@ def move():
     "Move ball and targets."
     global score
     if random.randrange(40) == 0:
-        y = positieVanDoelen()
-        target = Vector(200, y)
+        try:
+            y = positieVanDoelen()
+            assert y in range(-150,150)
+            target = Vector(200, y)
+        except AssertionError:
+            print("Je functie positieVanDoelen() geeft een te groot of een te klein getal. Kijk nog eens goed na.")
+            exit(-2)
+        except:
+            print("Je functie positieVanDoelen() werkt niet correct!")
+            exit(-2)
         targets.append(target)
 
     for target in targets:
@@ -548,23 +571,30 @@ def move():
 
     draw(nb_hits)
 
+
     for target in targets:
-        spelVoorbij(None)
+        try:
+            spelVoorbij(None)
+        except:
+            print("Je functie spelVoorbij() werkt niet goed.")
+            exit(-2)
         if not inside(target):
             spelVoorbij("gedaan")
             return
 
     turtle.ontimer(move, 50)
 
-if (input("Welkom bij Kanon! \n \n"
-      "Voordat je dit spelletje kan spelen, moet je eerst alle functies voltooien die in dit bestand staan. \n"
-      "Krijg je een foutmelding in de vorm van rode tekst? Lees dan eens de laatste lijn van de foutmelding om te \n"
-      "zien wat je foutdeed. Schrijf hier 'ja' als je deze uitleg gelezen hebt. --> ")).lower().__contains__('ja'):
+
+if 'ja'in (input("Welkom bij Kanon! \n \n"
+          "Voordat je dit spelletje kan spelen, moet je eerst alle functies voltooien die in dit bestand staan. \n"
+          "Krijg je een foutmelding in de vorm van rode tekst? Lees dan eens de laatste lijn van de foutmelding om te \n"
+          "zien wat je foutdeed. Schrijf hier 'ja' als je deze uitleg gelezen hebt. --> ")).lower():
 
     turtle.setup(420, 420, 370, 0)
     verbergTurtle()
     if turtle.isvisible():
-        raise RuntimeError("Je moet je turtle verbergen!")
+        print("Je moet je turtle verbergen met de functie verbergTurtle()!")
+        exit(-2)
     turtle.up()
     turtle.tracer(False)
     turtle.onscreenclick(tap)
@@ -572,3 +602,4 @@ if (input("Welkom bij Kanon! \n \n"
     turtle.done()
 else:
     print("Lees bovenstaand bericht goed en herstart je spelletje!")
+    exit(-2)
