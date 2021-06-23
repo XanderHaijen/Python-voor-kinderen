@@ -36,6 +36,10 @@ die aangevuld moeten worden.
 • `TicTacToe Opdracht` is een implementatie van het bekende spel _Tic-Tac-Toe_, ook wel _OXO_ genoemd, 
 en bestaat uit enkele functies die aangevuld moeten worden.
 
+• `FlappyBird Opdracht` is een implementatie van het bekende spel _Flappy Bird_ en bestaat
+uit enkele functies die aangevuld moeten worden en een paar reeds geschreven functies die aangepast moeten
+worden voor meer uitdaging in het spel.
+
 • De map `oplossingen` bevat voor alle oefeningen een modeloplossing. Deze zijn slechts indicatief,
 wat een opdracht kan natuurlijk op verschillende manieren worden volbracht.
 

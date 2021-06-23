@@ -79,15 +79,15 @@ def scorebord(score):
 
 
 class Vector(collections.Sequence):
-    """Two-dimensional vector.
+    """Two-dimensional Vector.
     Vectors can be modified in-place.
     >>> v = Vector(0, 1)
     >>> v.move(1)
     >>> v
-    vector(1, 2)
+    Vector(1, 2)
     >>> v.rotate(90)
     >>> v
-    vector(-2.0, 1.0)
+    Vector(-2.0, 1.0)
 
     """
     # pylint: disable=invalid-name
@@ -96,7 +96,7 @@ class Vector(collections.Sequence):
     __slots__ = ('_x', '_y', '_hash')
 
     def __init__(self, x, y):
-        """Initialize vector with coordinates: x, y.
+        """Initialize Vector with coordinates: x, y.
 
         >>> v = Vector(1, 2)
         >>> v.x
@@ -111,7 +111,7 @@ class Vector(collections.Sequence):
 
     @property
     def x(self):
-        """X-axis component of vector.
+        """X-axis component of Vector.
 
         >>> v = Vector(1, 2)
         >>> v.x
@@ -131,7 +131,7 @@ class Vector(collections.Sequence):
 
     @property
     def y(self):
-        """Y-axis component of vector.
+        """Y-axis component of Vector.
 
         >>> v = Vector(1, 2)
         >>> v.y
@@ -196,7 +196,7 @@ class Vector(collections.Sequence):
         raise IndexError
 
     def copy(self):
-        """Return copy of vector.
+        """Return copy of Vector.
 
         >>> v = Vector(1, 2)
         >>> w = v.copy()
@@ -240,14 +240,14 @@ class Vector(collections.Sequence):
         >>> w = Vector(3, 4)
         >>> v += w
         >>> v
-        vector(4, 6)
+        Vector(4, 6)
         >>> v += 1
         >>> v
-        vector(5, 7)
+        Vector(5, 7)
 
         """
         if self._hash is not None:
-            raise ValueError('cannot add vector after hashing')
+            raise ValueError('cannot add Vector after hashing')
         if isinstance(other, Vector):
             self.x += other.x
             self.y += other.y
@@ -262,11 +262,11 @@ class Vector(collections.Sequence):
         >>> v = Vector(1, 2)
         >>> w = Vector(3, 4)
         >>> v + w
-        vector(4, 6)
+        Vector(4, 6)
         >>> v + 1
-        vector(2, 3)
+        Vector(2, 3)
         >>> 2.0 + v
-        vector(3.0, 4.0)
+        Vector(3.0, 4.0)
 
         """
         copy = self.copy()
@@ -275,16 +275,16 @@ class Vector(collections.Sequence):
     __radd__ = __add__
 
     def move(self, other):
-        """Move vector by other (in-place).
+        """Move Vector by other (in-place).
 
         >>> v = Vector(1, 2)
         >>> w = Vector(3, 4)
         >>> v.move(w)
         >>> v
-        vector(4, 6)
+        Vector(4, 6)
         >>> v.move(3)
         >>> v
-        vector(7, 9)
+        Vector(7, 9)
 
         """
         self.__iadd__(other)
@@ -296,14 +296,14 @@ class Vector(collections.Sequence):
         >>> w = Vector(3, 4)
         >>> v -= w
         >>> v
-        vector(-2, -2)
+        Vector(-2, -2)
         >>> v -= 1
         >>> v
-        vector(-3, -3)
+        Vector(-3, -3)
 
         """
         if self._hash is not None:
-            raise ValueError('cannot subtract vector after hashing')
+            raise ValueError('cannot subtract Vector after hashing')
         if isinstance(other, Vector):
             self.x -= other.x
             self.y -= other.y
@@ -318,9 +318,9 @@ class Vector(collections.Sequence):
         >>> v = Vector(1, 2)
         >>> w = Vector(3, 4)
         >>> v - w
-        vector(-2, -2)
+        Vector(-2, -2)
         >>> v - 1
-        vector(0, 1)
+        Vector(0, 1)
 
         """
         copy = self.copy()
@@ -333,14 +333,14 @@ class Vector(collections.Sequence):
         >>> w = Vector(3, 4)
         >>> v *= w
         >>> v
-        vector(3, 8)
+        Vector(3, 8)
         >>> v *= 2
         >>> v
-        vector(6, 16)
+        Vector(6, 16)
 
         """
         if self._hash is not None:
-            raise ValueError('cannot multiply vector after hashing')
+            raise ValueError('cannot multiply Vector after hashing')
         if isinstance(other, Vector):
             self.x *= other.x
             self.y *= other.y
@@ -355,11 +355,11 @@ class Vector(collections.Sequence):
         >>> v = Vector(1, 2)
         >>> w = Vector(3, 4)
         >>> v * w
-        vector(3, 8)
+        Vector(3, 8)
         >>> v * 2
-        vector(2, 4)
+        Vector(2, 4)
         >>> 3.0 * v
-        vector(3.0, 6.0)
+        Vector(3.0, 6.0)
 
         """
         copy = self.copy()
@@ -368,16 +368,16 @@ class Vector(collections.Sequence):
     __rmul__ = __mul__
 
     def scale(self, other):
-        """Scale vector by other (in-place).
+        """Scale Vector by other (in-place).
 
         >>> v = Vector(1, 2)
         >>> w = Vector(3, 4)
         >>> v.scale(w)
         >>> v
-        vector(3, 8)
+        Vector(3, 8)
         >>> v.scale(0.5)
         >>> v
-        vector(1.5, 4.0)
+        Vector(1.5, 4.0)
 
         """
         self.__imul__(other)
@@ -389,14 +389,14 @@ class Vector(collections.Sequence):
         >>> w = Vector(4, 8)
         >>> v /= w
         >>> v
-        vector(0.5, 0.5)
+        Vector(0.5, 0.5)
         >>> v /= 2
         >>> v
-        vector(0.25, 0.25)
+        Vector(0.25, 0.25)
 
         """
         if self._hash is not None:
-            raise ValueError('cannot divide vector after hashing')
+            raise ValueError('cannot divide Vector after hashing')
         if isinstance(other, Vector):
             self.x /= other.x
             self.y /= other.y
@@ -411,9 +411,9 @@ class Vector(collections.Sequence):
         >>> v = Vector(1, 2)
         >>> w = Vector(3, 4)
         >>> w / v
-        vector(3.0, 2.0)
+        Vector(3.0, 2.0)
         >>> v / 2
-        vector(0.5, 1.0)
+        Vector(0.5, 1.0)
 
         """
         copy = self.copy()
@@ -424,7 +424,7 @@ class Vector(collections.Sequence):
 
         >>> v = Vector(1, 2)
         >>> -v
-        vector(-1, -2)
+        Vector(-1, -2)
 
         """
         # pylint: disable=invalid-unary-operand-type
@@ -444,7 +444,7 @@ class Vector(collections.Sequence):
         return (self.x ** 2 + self.y ** 2) ** 0.5
 
     def rotate(self, angle):
-        """Rotate vector counter-clockwise by angle (in-place).
+        """Rotate Vector counter-clockwise by angle (in-place).
 
         >>> v = Vector(1, 2)
         >>> v.rotate(90)
@@ -453,7 +453,7 @@ class Vector(collections.Sequence):
 
         """
         if self._hash is not None:
-            raise ValueError('cannot rotate vector after hashing')
+            raise ValueError('cannot rotate Vector after hashing')
         radians = angle * math.pi / 180.0
         cosine = math.cos(radians)
         sine = math.sin(radians)
@@ -467,7 +467,7 @@ class Vector(collections.Sequence):
 
         >>> v = Vector(1, 2)
         >>> repr(v)
-        'vector(1, 2)'
+        'Vector(1, 2)'
 
         """
         type_self = type(self)

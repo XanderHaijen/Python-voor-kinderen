@@ -1,63 +1,93 @@
-# Kanon: raak zo veel mogelijk doelen
-# De opdracht begint bij "HIER BEGINT DE OPDRACHT"
-
-# Laat deze imports staan: je hebt ze straks nodig.
 import collections.abc as collections
 import math
 import random
 import turtle
 
+# ------------------------ HIER BEGINT HET EERSTE DEEL VAN DE OPDRACHT-----------------------------
+# Vul hieronder de functies aan, zodat ze doen wat gevraagd wordt in de opgave.
 
-# --------------------------- HIER BEGINT DE OPDRACHT ---------------------------------
+
+def scorebord(score, level):
+    """
+    Maak een string met een scorebord en gebruik een return.
+    Een scorebord moet er als volgt uitzien:
+
+                SCORE : 50    LEVEL 4
+
+    Tip: wil je een getal in een string gebruiken, moet je gebruik maken van str (  )
+    """
+    return ""
 
 
-def verbergTurtle():
+def binnenin(punt):
     """
-    OPDRACHT: Gebruik een commando uit het turtle-package om de turtle te verbergen.
-    TIP: dit kan in 1 lijn!
+    Deze functie geeft waar (True) terug als een punt binnenin het scherm ligt. Een punt ligt binnenin het scherm
+    als de waarde ervan tussen -200 en 200 ligt. Is dat niet het geval, geeft de functie onwaar (False) terug. Gebruik
+    een return.
     """
-    pass
+    return False
 
-def snelheidVanDoelen():
-    """
-    OPDRACHT: Gebruik een return-statement om de snelheid van de doelen te bepalen.
-        Dit is een kommagetal tussen 0 en 3. Je mag zelf kiezen hoe snel je doelen vliegen.
-    """
-    return
 
-def verhoogScore(score):
+def kleur(levend):
     """
-    OPDRACHT: Als je een bal raakt, verdien je een punt. Gebruik een return om een verhoogde score terug te geven.
-            Een verhoogde score is de score met één punt bij.
+    Zolang je nog leeft, ziet je balletje groen. Als je een bal raakt, ga je dood en wordt het balletje rood. Deze functie
+    geeft de juiste kleur terug. Als levend dus waar is (True), dan geeft de functie 'groen' terug, anders 'rood'.
     """
-    return
+    return ""
 
-def spelVoorbij(status):
-    """
-    OPDRACHT: Print een bericht als het spel afgelopen is. Het spel is afgelopen als de variabele status gelijk is
-            aan 'gedaan'.
-    """
-    print('')
 
-def positieVanDoelen():
+def willekeurig_getal():
     """
-    OPDRACHT: De doelen verschijnen op een willekeurige plaats langs de zijkant. Om die plaats te bepalen, moet je een
-                return gebruiken om een willekeurig getal tussen -150 en 150 terug te geven
-    TIP: het package 'random' is al geïmporteerd
+    Geef een willekeurige integer terug tussen -199 en 199. Gebruik hiervoor een return.
     """
     return 0
 
-def scorebord(score):
-    """
-    OPDRACHT: maak een string voor het scorebord die de score weergeeft.
-            !! Gebruik een return om je string terug te geven. !!
-    VOORBEELD: Zo'n string ziet er bijvoorbeeld als volgt uit.
 
-            " SCORE : 12 "
+# ------------------------------------ HIER EINDIGT HET EERSTE DEEL VAN DE OPDRACHT------------------------------------
 
-    TIP: Wil je een getal gebruiken in een string, kan je dit doen door er str(  ) rond te zetten
+# ------------------------------------ HIER BEGINT HET TWEEDE DEEL VAN DE OPDRACHT ------------------------------------
+# Let op: dit is een moeilijke opdracht. Doe dit enkel als je Python goed begrijpt.
+
+
+# Vul hieronder de functie aan, zodat ze doet wat gevraagd wordt in de opgave.
+
+
+def maakBal(hoogte, ballen):
     """
-    return ""
+    Deze functie maakt een bal aan. In Python wordt een bal voorgesteld door een "Vector". Wat dit precies is, is niet
+    zo belangrijk. Je kunt een nieuwe vector maken, met de naam "bal" op de volgende manier
+    bal = Vector(breedte, hoogte). Bijvoorbeeld
+
+    >> bal = Vector(250, 50)
+
+    maakt een bal op 250 pixels rechts van het midden en 50 pixels boven het midden.
+
+    Nadat je een bal hebt aangemaakt, moet je deze toevoegen aan de lijst met ballen. Die lijst heet gewoon "ballen".
+    Een bal toevoegen doe je met "append", wat Engels is voor "eraan toevoegen". Bijvoorbeeld
+
+    >> lijst.append((nieuw_stukje,extra_info))
+
+    voegt een nieuw stukje toe aan de lijst met naam "lijst".
+
+    OPDRACHT: Zorg ervoor dat de ballen verschillende groottes hebben. De maximale grootte is 40 en de minimale
+    grootte is 5.
+    """
+    bal = Vector(199, hoogte)
+    grootte = 20
+    ballen.append((bal, 20))  # 20 is de grootte van de bal
+
+
+def tekenBal(ballen):
+    """
+    Nu je ervoor gezorgd hebt dat ballen een verschillende grootte hebben, gaan we ook zorgen dat het programma
+    de ballen tekent met de juiste grootte.
+    OPDRACHT: zorg ervoor dat de ballen getekend worden met de juiste grootte
+
+    TIP: 'for __ in ballen' betekent dat je iets doet voor alle ballen.
+    """
+    for bal, grootte in ballen:
+        turtle.goto(bal.x, bal.y)
+        turtle.dot(20, "black")  # 20 is de grootte van de bal
 
 
 # ------------------------------------ HIER EINDIGT DE OPDRACHT -------------------------------------------------------
@@ -71,16 +101,19 @@ def scorebord(score):
 # ---------------------------------------------------------------------------------------------------------------------
 
 
+# klasse vector overgenomen uit package freegames -> utils -> Vector
 class Vector(collections.Sequence):
-    """Two-dimensional Vector.
+    """Two-dimensional vector.
+
     Vectors can be modified in-place.
+
     >>> v = Vector(0, 1)
     >>> v.move(1)
     >>> v
-    Vector(1, 2)
+    vector(1, 2)
     >>> v.rotate(90)
     >>> v
-    Vector(-2.0, 1.0)
+    vector(-2.0, 1.0)
 
     """
     # pylint: disable=invalid-name
@@ -89,7 +122,7 @@ class Vector(collections.Sequence):
     __slots__ = ('_x', '_y', '_hash')
 
     def __init__(self, x, y):
-        """Initialize Vector with coordinates: x, y.
+        """Initialize vector with coordinates: x, y.
 
         >>> v = Vector(1, 2)
         >>> v.x
@@ -104,7 +137,7 @@ class Vector(collections.Sequence):
 
     @property
     def x(self):
-        """X-axis component of Vector.
+        """X-axis component of vector.
 
         >>> v = Vector(1, 2)
         >>> v.x
@@ -124,7 +157,7 @@ class Vector(collections.Sequence):
 
     @property
     def y(self):
-        """Y-axis component of Vector.
+        """Y-axis component of vector.
 
         >>> v = Vector(1, 2)
         >>> v.y
@@ -189,7 +222,7 @@ class Vector(collections.Sequence):
         raise IndexError
 
     def copy(self):
-        """Return copy of Vector.
+        """Return copy of vector.
 
         >>> v = Vector(1, 2)
         >>> w = v.copy()
@@ -233,10 +266,10 @@ class Vector(collections.Sequence):
         >>> w = Vector(3, 4)
         >>> v += w
         >>> v
-        Vector(4, 6)
+        vector(4, 6)
         >>> v += 1
         >>> v
-        Vector(5, 7)
+        vector(5, 7)
 
         """
         if self._hash is not None:
@@ -255,11 +288,11 @@ class Vector(collections.Sequence):
         >>> v = Vector(1, 2)
         >>> w = Vector(3, 4)
         >>> v + w
-        Vector(4, 6)
+        vector(4, 6)
         >>> v + 1
-        Vector(2, 3)
+        vector(2, 3)
         >>> 2.0 + v
-        Vector(3.0, 4.0)
+        vector(3.0, 4.0)
 
         """
         copy = self.copy()
@@ -268,16 +301,16 @@ class Vector(collections.Sequence):
     __radd__ = __add__
 
     def move(self, other):
-        """Move Vector by other (in-place).
+        """Move vector by other (in-place).
 
         >>> v = Vector(1, 2)
         >>> w = Vector(3, 4)
         >>> v.move(w)
         >>> v
-        Vector(4, 6)
+        vector(4, 6)
         >>> v.move(3)
         >>> v
-        Vector(7, 9)
+        vector(7, 9)
 
         """
         self.__iadd__(other)
@@ -289,10 +322,10 @@ class Vector(collections.Sequence):
         >>> w = Vector(3, 4)
         >>> v -= w
         >>> v
-        Vector(-2, -2)
+        vector(-2, -2)
         >>> v -= 1
         >>> v
-        Vector(-3, -3)
+        vector(-3, -3)
 
         """
         if self._hash is not None:
@@ -311,9 +344,9 @@ class Vector(collections.Sequence):
         >>> v = Vector(1, 2)
         >>> w = Vector(3, 4)
         >>> v - w
-        Vector(-2, -2)
+        vector(-2, -2)
         >>> v - 1
-        Vector(0, 1)
+        vector(0, 1)
 
         """
         copy = self.copy()
@@ -326,10 +359,10 @@ class Vector(collections.Sequence):
         >>> w = Vector(3, 4)
         >>> v *= w
         >>> v
-        Vector(3, 8)
+        vector(3, 8)
         >>> v *= 2
         >>> v
-        Vector(6, 16)
+        vector(6, 16)
 
         """
         if self._hash is not None:
@@ -348,11 +381,11 @@ class Vector(collections.Sequence):
         >>> v = Vector(1, 2)
         >>> w = Vector(3, 4)
         >>> v * w
-        Vector(3, 8)
+        vector(3, 8)
         >>> v * 2
-        Vector(2, 4)
+        vector(2, 4)
         >>> 3.0 * v
-        Vector(3.0, 6.0)
+        vector(3.0, 6.0)
 
         """
         copy = self.copy()
@@ -361,16 +394,16 @@ class Vector(collections.Sequence):
     __rmul__ = __mul__
 
     def scale(self, other):
-        """Scale Vector by other (in-place).
+        """Scale vector by other (in-place).
 
         >>> v = Vector(1, 2)
         >>> w = Vector(3, 4)
         >>> v.scale(w)
         >>> v
-        Vector(3, 8)
+        vector(3, 8)
         >>> v.scale(0.5)
         >>> v
-        Vector(1.5, 4.0)
+        vector(1.5, 4.0)
 
         """
         self.__imul__(other)
@@ -382,10 +415,10 @@ class Vector(collections.Sequence):
         >>> w = Vector(4, 8)
         >>> v /= w
         >>> v
-        Vector(0.5, 0.5)
+        vector(0.5, 0.5)
         >>> v /= 2
         >>> v
-        Vector(0.25, 0.25)
+        vector(0.25, 0.25)
 
         """
         if self._hash is not None:
@@ -404,9 +437,9 @@ class Vector(collections.Sequence):
         >>> v = Vector(1, 2)
         >>> w = Vector(3, 4)
         >>> w / v
-        Vector(3.0, 2.0)
+        vector(3.0, 2.0)
         >>> v / 2
-        Vector(0.5, 1.0)
+        vector(0.5, 1.0)
 
         """
         copy = self.copy()
@@ -417,7 +450,7 @@ class Vector(collections.Sequence):
 
         >>> v = Vector(1, 2)
         >>> -v
-        Vector(-1, -2)
+        vector(-1, -2)
 
         """
         # pylint: disable=invalid-unary-operand-type
@@ -437,7 +470,7 @@ class Vector(collections.Sequence):
         return (self.x ** 2 + self.y ** 2) ** 0.5
 
     def rotate(self, angle):
-        """Rotate Vector counter-clockwise by angle (in-place).
+        """Rotate vector counter-clockwise by angle (in-place).
 
         >>> v = Vector(1, 2)
         >>> v.rotate(90)
@@ -460,138 +493,164 @@ class Vector(collections.Sequence):
 
         >>> v = Vector(1, 2)
         >>> repr(v)
-        'Vector(1, 2)'
+        'vector(1, 2)'
 
         """
         type_self = type(self)
         name = type_self.__name__
         return '{}({!r}, {!r})'.format(name, self.x, self.y)
 
-
-ball = Vector(-200, -200)
-speed = Vector(0, 0)
-targets = []
-score = 0
+bird = Vector(0, 0)
+balls = []
 
 
-def tap(x, y):
-    "Respond to screen tap."
-    if not inside(ball):
-        ball.x = -199
-        ball.y = -199
-        speed.x = (x + 200) / 25
-        speed.y = (y + 200) / 25
+def up(x, y):
+    "Move bird up in response to screen tap."
+    up = Vector(0, 30)
+    bird.move(up)
+
+def inside(point):
+    try:
+        assert binnenin(point.x) == (-200 < point.x < 200)
+        assert binnenin(point.y) == (-200 < point.y < 200)
+        return binnenin(point.x) and binnenin(point.y)
+    except AssertionError:
+        print("Je functie binnenin( ) geeft het verkeerde resultaat. Kijk nog eens goed na.")
+        exit(-2)
+    except TypeError:
+        print("Je functie binnenin( ) geeft geen waar of onwaar (True / False) terug. Kijk nog eens na.")
+        exit(-2)
+    except:
+        print("Je functie binnenin( ) werkt niet goed. Kijk nog eens goed na.")
+        exit(-2)
 
 
-def inside(xy):
-    "Return True if xy within screen."
-    return -200 < xy.x < 200 and -200 < xy.y < 200
-
-
-def draw(nb_hits):
-    "Draw ball and targets."
+def draw(alive, score, level):
+    "Draw screen objects."
     turtle.clear()
 
-    for target in targets:
-        turtle.goto(target.x, target.y)
-        turtle.dot(20, 'blue')
+    turtle.goto(0, 180)
+    turtle.showturtle()
 
-    if inside(ball):
-        turtle.goto(ball.x, ball.y)
-        turtle.dot(6, 'red')
+    try:
+        turtle.write(scorebord(score, level), align='center', font=("Calibri", 15, "bold"))
+    except TypeError:
+        print("Je functie scorebord( ) geeft geen string terug.")
+        exit(-2)
+    except:
+        print("Je functie scorebord( ) werkt niet goed.")
+        exit(-2)
 
-    update_score(nb_hits)
+    turtle.hideturtle()
+    turtle.goto(bird.x, bird.y)
+
+    try:
+        color = kleur(alive).lower()
+        assert color == "groen" if alive else "rood"
+        color = "green" if color == "groen" else "red"
+        turtle.dot(10, color)
+
+    except AssertionError:
+        print("Je functie kleur( ) geeft een verkeerde kleur, of helemaal geen kleur terug. Kijk nog eens na.")
+        exit(-2)
+    except TypeError:
+        print("Je functie kleur( ) geeft geen string terug!")
+        exit(-2)
+    except:
+        print("Je functie kleur( ) werkt niet goed.")
+        exit(-2)
+    if enable:
+        try:
+            tekenBal(balls)
+        except:
+            print("Je functie tekenBal() werkt niet goed.")
+            exit(-2)
+    else:
+        for ball, size in balls:
+            turtle.goto(ball.x, ball.y)
+            turtle.dot(20, 'black')
+
     turtle.update()
 
 
-def update_score(nb_hits):
-    global score
-    try:
-        for i in range(nb_hits):
-            score = verhoogScore(score)
-    except:
-        print("Je functie verhoogScore() werkt niet correct!")
-        exit(-2)
-    turtle.goto(0, 175)
-    turtle.pendown()
-    try:
-        my_string = scorebord(score)
-        turtle.write(my_string, align='center', font=("Arial", 20, 'normal'))
-    except TypeError:
-        print("Je functie scorebord() maakt geen string aan! Denk aan str( ).")
-        exit(-2)
-    except:
-        print("Je functie scorebord() werkt niet correct.")
-        exit(-2)
-    turtle.penup()
-
-
 def move():
-    "Move ball and targets."
+    "Update object positions."
+    turtle.listen()
+    turtle.onkey(up, "Up")
+    bird.y -= 5
+
+    global enable
     global score
-    if random.randrange(40) == 0:
+    global ball_speed
+    global level
+
+    for ball, _ in balls:
+        ball.x -= ball_speed
+
+    if random.randrange(10 // level) == 0:
         try:
-            y = positieVanDoelen()
-            assert y in range(-150, 150)
-            target = Vector(200, y)
+            y = willekeurig_getal()
+            assert y in range(-200,200)
         except AssertionError:
-            print("Je functie positieVanDoelen() geeft een te groot of een te klein getal. Kijk nog eens goed na.")
+            print("Je functie willekeurig_getal() geeft een getal terug dat te groot of te klein is.")
+            exit(-2)
+        except TypeError:
+            print("Je functie willekeurig_getal() geeft geen getal terug.")
             exit(-2)
         except:
-            print("Je functie positieVanDoelen() werkt niet correct!")
+            print("Je functie willekeurig_getal() werkt niet goed.")
             exit(-2)
-        targets.append(target)
 
-    for target in targets:
-        try:
-            target.x -= (snelheidVanDoelen() * 0.5 if snelheidVanDoelen() != 0 else 0.5)
-        except:
-            target.x -= 0.5
-
-    if inside(ball):
-        speed.y -= 0.35
-        ball.move(speed)
-
-    dupe = targets.copy()
-    targets.clear()
-
-    nb_hits = 0
-    for target in dupe:
-        if abs(target - ball) > 13:
-            targets.append(target)
+        if enable:
+            try:
+                bal = maakBal(y, balls)
+            except:
+                print("Je functie maakBal() werkt niet goed. Kijk nog eens na!")
+                exit(-2)
         else:
-            nb_hits += 1
+            size = 30
+            ball = Vector(199, y)
+            balls.append((ball, size))
 
-    draw(nb_hits)
+    while len(balls) > 0 and not inside(balls[0][0]):
+        balls.pop(0)
+        score += 1
+        if score % 15 == 0 and score != 0:
+            ball_speed += 1.5
+            level += 1
 
-    for target in targets:
-        try:
-            spelVoorbij(None)
-        except:
-            print("Je functie spelVoorbij() werkt niet goed.")
-            exit(-2)
-        if not inside(target):
-            spelVoorbij("gedaan")
+    if not inside(bird):
+        draw(False, score, level)
+        return
+
+    for ball, size in balls:
+        if abs(ball - bird) < size // 2:
+            draw(False, score, level)
             return
 
+    draw(True, score, level)
     turtle.ontimer(move, 50)
 
-
-if 'ja' in (input("Welkom bij Kanon! \n \n"
+if 'ja' not in (input("Welkom bij Flappy Bird! \n \n"
                   "Voordat je dit spelletje kan spelen, moet je eerst alle functies voltooien die in dit bestand staan. \n"
                   "Krijg je een foutmelding in de vorm van rode tekst? Lees dan eens de laatste lijn van de foutmelding om te \n"
                   "zien wat je foutdeed. Schrijf hier 'ja' als je deze uitleg gelezen hebt. --> ")).lower():
-
-    turtle.setup(420, 420, 370, 0)
-    verbergTurtle()
-    if turtle.isvisible():
-        print("Je moet je turtle verbergen met de functie verbergTurtle()!")
-        exit(-2)
-    turtle.up()
-    turtle.tracer(False)
-    turtle.onscreenclick(tap)
-    move()
-    turtle.done()
-else:
-    print("Lees bovenstaand bericht goed en herstart je spelletje!")
     exit(-2)
+else:
+    print("")
+    if 'ja' in (input("Heb je ook het tweede deel van de opdracht gemaakt? Ja / Nee ---> ")).lower():
+        enable = True
+    else:
+        enable = False
+
+score = 0
+ball_speed = 3
+level = 1
+
+turtle.setup(420, 420, 370, 0)
+turtle.hideturtle()
+turtle.up()
+turtle.tracer(False)
+turtle.onscreenclick(up)
+move()
+turtle.done()
