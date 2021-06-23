@@ -13,6 +13,9 @@ op te vangen en te vervangen door een korte Nederlandstalige uitleg gevolgd door
 Python zou raisen. Dit geldt niet voor _syntax errors_: deze zullen nog steeds op de normale manier
 een Error raisen.
 
+**Gebruik**: de eenvoudigste manier om deze bestanden te 'downloaden' is door het bestand in
+_Raw_-formaat te openen en dan alles selecteren en kopiëren in een nieuw bestand in de IDLE.
+
 Als je een fout terugvindt in de opdrachten of oplossingen, of een suggestie hebt voor een verdere
 verbetering, gelieve me te contacteren op xanderhayen2@gmail.com.
 
@@ -34,6 +37,8 @@ en bestaat uit enkele functies die aangevuld moeten worden.
 
 • De map `oplossingen` bevat voor alle oefeningen een modeloplossing. Deze zijn slechts indicatief,
 wat een opdracht kan natuurlijk op verschillende manieren worden volbracht.
+
+• De map `.idea ` bevat enkel configuratie-bestanden en geen bestanden van nut voor de opdrachten.
 
 De opdrachten en oplossingen maken allemaal gebruik van enkel de packages die in de basis van
 Python zitten. De kinderen moeten dus geen nieuwe packages of modules downloaden.
