@@ -11,7 +11,8 @@ invullen van een aantal functies.
 **Error handling en foutdetectie**: Er is zoveel mogelijk geprobeerd om fouten die bij de uitvoering plaatsvinden
 op te vangen en te vervangen door een korte Nederlandstalige uitleg gevolgd door een exit. Dit vervangt dus de Errors die
 Python zou raisen. Dit geldt niet voor _syntax errors_: deze zullen nog steeds op de normale manier
-een Error raisen.
+een Error raisen. Als de code zo'n Error opvangt, wordt er dus een speciale foutboodschap geprint en zal
+het programma stoppen met exitcode -2.
 
 **Gebruik**: de eenvoudigste manier om deze bestanden te 'downloaden' is door het bestand in
 _Raw_-formaat te openen en dan alles selecteren en kopiëren in een nieuw bestand in de IDLE.
