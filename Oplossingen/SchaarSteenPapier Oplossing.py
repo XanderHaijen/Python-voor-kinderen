@@ -1,5 +1,6 @@
 import random
 
+
 # OPDRACHT:
 # Schrijf je eigen versie van shcaar-steen-papier tegen de computer
 # 1. Begin met een programma dat het spel exact 1 keer uitvoert
@@ -9,19 +10,19 @@ import random
 # 4. Zorg ervoor dat je programma een nieuwe keuze vraagt als de speler geen schaar, steen of papier ingeeft
 # 5. Zorg ervoor dat je spelletje niet hoofdlettergevoelig is, maar alles in kleine letters kan verwerken
 
-
+# Functie schaar_steen_papier: wordt later gebruikt in het volledig spelletje
 def schaar_steen_papier():
     keuze_van_speler = input("Geef je zet (schaar, steen, papier):  ")
     while keuze_van_speler.lower() not in ("schaar", "steen", "papier"):
         keuze_van_speler = input("Kies tussen schaar, steen of papier! \n "
-                            "Geef je zet (schaar, steen, papier):  ")
+                                 "Geef je zet (schaar, steen, papier):  ")
     keuze_van_speler = keuze_van_speler.lower()
     mogelijke_acties = "steen", "papier", "schaar"
     keuze_van_computer = random.choice(mogelijke_acties)
     print("Jij koos " + keuze_van_speler + " ,de computer koos " + keuze_van_computer + " .")
 
     if keuze_van_speler == keuze_van_computer:
-        print("Jij en de computer kozen allebei " + keuze_van_speler +". Gelijkspel!")
+        print("Jij en de computer kozen allebei " + keuze_van_speler + ". Gelijkspel!")
     elif keuze_van_speler == "steen":
         if keuze_van_computer == "schaar":
             print("Steen klopt de schaar kapot. Jij wint!")
@@ -38,13 +39,12 @@ def schaar_steen_papier():
         else:
             print("Steen klopt de schaar kapot. Jij verliest.")
 
-# Spelletje #
+
+# Spelletje
 speel_nog_eens = "ja"
 
 while speel_nog_eens == 'ja':
     schaar_steen_papier()
     speel_nog_eens = input("Nog eens spelen? (ja / nee): ").lower()
-    while speel_nog_eens.lower() != "ja" and speel_nog_eens.lower() != "nee":
+    while speel_nog_eens != "ja" and speel_nog_eens != "nee":
         speel_nog_eens = input("Antwoord met ja of nee: ").lower()
-
-
