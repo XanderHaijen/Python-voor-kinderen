@@ -16,7 +16,7 @@ def scorebord(score, level):
 
     Tip: wil je een getal in een string gebruiken, moet je gebruik maken van str (  )
     """
-    return "SCORE : " + str(score) + "     LEVEL  " + str(level)
+    return ""
 
 
 def binnenin(punt):
@@ -25,10 +25,7 @@ def binnenin(punt):
     als de waarde ervan tussen -200 en 200 ligt. Is dat niet het geval, geeft de functie onwaar (False) terug. Gebruik
     een return.
     """
-    if -200 < punt < 200:
-        return True
-    else:
-        return False
+    return False
 
 
 def kleur(levend):
@@ -36,18 +33,14 @@ def kleur(levend):
     Zolang je nog leeft, ziet je balletje groen. Als je een bal raakt, ga je dood en wordt het balletje rood. Deze functie
     geeft de juiste kleur terug. Als levend dus waar is (True), dan geeft de functie 'groen' terug, anders 'rood'.
     """
-    if levend:
-        return "groen"
-    else:
-        return "rood"
+    return ""
 
 
 def willekeurig_getal():
     """
     Geef een willekeurige integer terug tussen -199 en 199. Gebruik hiervoor een return.
     """
-    getal = random.randint(-199,199)
-    return getal
+    return 0
 
 
 # ------------------------------------ HIER EINDIGT HET EERSTE DEEL VAN DE OPDRACHT------------------------------------
@@ -80,8 +73,8 @@ def maakBal(hoogte, ballen):
     grootte is 5.
     """
     bal = Vector(199, hoogte)
-    grootte = random.randint(5,40)  # wijzigen van = 20
-    ballen.append((bal, grootte))  # 20 vervangen door grootte
+    grootte = 20
+    ballen.append((bal, 20))  # 20 is de grootte van de bal
 
 
 def tekenBal(ballen):
@@ -94,7 +87,7 @@ def tekenBal(ballen):
     """
     for bal, grootte in ballen:
         turtle.goto(bal.x, bal.y)
-        turtle.dot(grootte, "black")  # 20 vervangen door grootte
+        turtle.dot(20, "black")  # 20 is de grootte van de bal
 
 
 # ------------------------------------ HIER EINDIGT DE OPDRACHT -------------------------------------------------------
