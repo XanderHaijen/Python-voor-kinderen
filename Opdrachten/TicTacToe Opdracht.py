@@ -10,7 +10,7 @@ def keuze_van_computer():
     """ OPDRACHT: gebruik een return om een willekeurig getal terug te geven van 0 tot en met 8.
         TIP: in dit bestand is het package "random" al geïmporteerd
     """
-    return random.randint(0, 8)
+    return
 
 def keuze_van_speler():
     """
@@ -19,28 +19,21 @@ def keuze_van_speler():
     Gebruik een return om het antwoord terug te geven.
     TIP: gebruik een while-lus om te checken of de input juist was.
     """
-    vraag = int(input("Geef een getal tussen 1 en 9: "))
-    return vraag
+    return
 
 def verminder_getal(getal):
     """
     OPDRACHT: verlaag het gegeven getal met 1 en gebruik een return om het terug te geven
     TIP: gebruik hiervoor een nieuwe variabele
     """
-    b = 1
-    a = getal
-    c = a - b
-    return c
+    return
 
 def niet_bezet(vakjes, vak):
     """
     OPDRACHT: ga na of een vakje al bezet is. Een vakje is niet bezet als het gelijk is aan ' ' (een spatie).
     TIP: om het juiste vakje te kiezen, kan je gebruik maken van de variabele vakjes[vak]
     """
-    if vakjes[vak] == ' ':
-        return True
-    elif vakjes[vak] != ' ':
-        return False
+    return
 
 def print_uitkomst(uitkomst, winnaar):
     """
@@ -51,10 +44,7 @@ def print_uitkomst(uitkomst, winnaar):
         kijk eerst of de uitkomst 'gewonnen' of 'gelijk' is. Als de uitkomst 'gelijk' is, print je 'gelijkstand'.
         Zo niet moet je bekijken wie er gewonnen heeft
     """
-    if uitkomst == 'gelijk':
-        print("Het is een gelijke stand!")
-    elif uitkomst == 'gewonnen':
-        print("De winnaar is " + winnaar + '.')
+    print(...)
 
 
 # -------------------- HIER EINDIGT DE OPDRACHT --------------------

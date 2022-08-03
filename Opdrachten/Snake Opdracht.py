@@ -13,7 +13,7 @@ def mijnNaam():
     """
     OPDRACHT: gebruik return om een string terug te geven met je naam
     """
-    return 'Xander Haijen'
+    return ''
 
 def maakSlang(turtle):
     """
@@ -24,11 +24,7 @@ def maakSlang(turtle):
         3. Hef de pen van je turtle op
         4. Ga naar de positie (0,0)
     """
-    turtle.speed(0)
-    turtle.color('black')
-    turtle.shape('square')
-    turtle.penup()
-    turtle.goto(0,0)
+    ...
 
 def maakEten(turtle):
     """
