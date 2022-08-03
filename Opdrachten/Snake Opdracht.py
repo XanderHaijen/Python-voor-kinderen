@@ -13,7 +13,7 @@ def mijnNaam():
     """
     OPDRACHT: gebruik return om een string terug te geven met je naam
     """
-    return ''
+    return 'Xander Haijen'
 
 def maakSlang(turtle):
     """
@@ -25,7 +25,10 @@ def maakSlang(turtle):
         4. Ga naar de positie (0,0)
     """
     turtle.speed(0)
-    ...
+    turtle.color('black')
+    turtle.shape('square')
+    turtle.penup()
+    turtle.goto(0,0)
 
 def maakEten(turtle):
     """
@@ -76,7 +79,7 @@ def kiesMaximum(getal1, getal2):
 # ----------------------------- EINDE VAN DE OPDRACHT -------------------------------
 
 
-if (input("Welkom bij Kanon! \n \n"
+if (input("Welkom bij Snake! \n \n"
       "Voordat je dit spelletje kan spelen, moet je eerst alle functies voltooien die in dit bestand staan. \n"
       "Krijg je een foutmelding in de vorm van rode tekst? Lees dan eens de laatste lijn van de foutmelding om te \n"
       "zien wat je foutdeed. Schrijf hier 'ja' als je deze uitleg gelezen hebt. --> ")).lower().__contains__('ja'):

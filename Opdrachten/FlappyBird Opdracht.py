@@ -25,7 +25,8 @@ def binnenin(punt):
     als de waarde ervan tussen -200 en 200 ligt. Is dat niet het geval, geeft de functie onwaar (False) terug. Gebruik
     een return.
     """
-    return False
+    return True, False
+
 
 
 def kleur(levend):

@@ -14,8 +14,8 @@ Python zou raisen. Dit geldt niet voor _syntax errors_: deze zullen nog steeds o
 een Error raisen. Als de code zo'n Error opvangt, wordt er dus een speciale foutboodschap geprint en zal
 het programma stoppen met exitcode -2.
 
-**Gebruik**: de eenvoudigste manier om deze bestanden te 'downloaden' is door het bestand in
-_Raw_-formaat te openen en dan alles selecteren en kopiëren in een nieuw bestand in de IDLE.
+**Gebruik**: de eenvoudigste manier om deze bestanden te 'downloaden' is door het bestand te kopiëren via de kopieerknop
+rechtsboven (_copy raw contents_) en dan te plakken in een bestand in de IDLE.
 
 Als je een fout terugvindt in de opdrachten of oplossingen, of een suggestie hebt voor een verdere
 verbetering, gelieve me te contacteren op xanderhayen2@gmail.com.
@@ -40,10 +40,5 @@ en bestaat uit enkele functies die aangevuld moeten worden.
 uit enkele functies die aangevuld moeten worden en een paar reeds geschreven functies die aangepast moeten
 worden voor meer uitdaging in het spel.
 
-• De map `oplossingen` bevat voor alle oefeningen een modeloplossing. Deze zijn slechts indicatief,
-wat een opdracht kan natuurlijk op verschillende manieren worden volbracht.
-
-• De map `.idea ` bevat enkel configuratie-bestanden en geen bestanden van nut voor de opdrachten.
-
-De opdrachten en oplossingen maken allemaal gebruik van enkel de packages die in de basis van
+De opdrachten maken allemaal gebruik van enkel de packages die in de basis van
 Python zitten. De kinderen moeten dus geen nieuwe packages of modules downloaden.

@@ -23,21 +23,21 @@ def snelheidVanDoelen():
     OPDRACHT: Gebruik een return-statement om de snelheid van de doelen te bepalen.
         Dit is een kommagetal tussen 0 en 3. Je mag zelf kiezen hoe snel je doelen vliegen.
     """
-    return
+    return 0
 
 def verhoogScore(score):
     """
     OPDRACHT: Als je een bal raakt, verdien je een punt. Gebruik een return om een verhoogde score terug te geven.
             Een verhoogde score is de score met één punt bij.
     """
-    return
+    return 0
 
 def spelVoorbij(status):
     """
     OPDRACHT: Print een bericht als het spel afgelopen is. Het spel is afgelopen als de variabele status gelijk is
             aan 'gedaan'.
     """
-    print('')
+    print("")
 
 def positieVanDoelen():
     """
